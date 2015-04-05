@@ -11,7 +11,7 @@ block append scripts
 		makeTeamPosChart(!{JSON.stringify(teamPos)});
 		makeTeamNegChart(!{JSON.stringify(teamNeg)});
 block content
-	h1 #{title}
+	h1(style="text-align:center") #{title}
 
 	div(id='playermakes', style={float:'left', width: '50%', height: '400px'})
 	div(id='playermisses', style={float:'right', width: '50%', height: '400px'})

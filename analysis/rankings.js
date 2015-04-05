@@ -108,7 +108,7 @@ var graphs = function(req, res) {
 		}
 	], function(err, results) {
 		if (err) console.log(err);
-		res.render('practice', {positive: results[0], negative: results[1], teamPos: results[2], teamNeg: results[3]});
+		res.render('graphs', {title: 'Analysis',positive: results[0], negative: results[1], teamPos: results[2], teamNeg: results[3]});
 	});
 }
 
