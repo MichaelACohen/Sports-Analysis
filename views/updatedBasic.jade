@@ -1,0 +1,34 @@
+extends layout
+
+block append scripts
+	script(src='http://code.highcharts.com/highcharts.js')
+	script(src='/javascripts/chart.js')
+	script.
+		makeChart(!{JSON.stringify(data)})
+block content
+	h1 #{title}
+	div
+		table
+			thead
+				tr
+					th Players
+					th 3 Misses
+					th 2 Misses
+					th 1 Miss
+					th All Shots
+					th 1 Make
+					th 2 Makes
+					th 3 Makes
+			tbody
+				each val in data
+					tr
+						td= val.name
+						td= val.data[0].percent - val.data[3].percent
+						td= val.data[1].percent - val.data[3].percent
+						td= val.data[2].percent - val.data[3].percent
+						td= val.data[3].percent - val.data[3].percent
+						td= val.data[4].percent - val.data[3].percent
+						td= val.data[5].percent - val.data[3].percent
+						td= val.data[6].percent - val.data[3].percent
+	div(id='container', style={width: '100%', height: '400px'})
+

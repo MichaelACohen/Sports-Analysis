@@ -1,0 +1,30 @@
+extends layout
+
+block scripts
+
+block content
+	h1 Parameters for analysis
+	div
+		form(action='/scraping/analyze', method='post')
+			table
+				tr
+					td Type of Analysis
+					td
+						input(type="radio", name="entity", value="players", checked=true)
+						| Players
+						input(type="radio", name="entity", value="teams", checked=false)
+						| Teams
+				tr
+					td Names
+					td
+						input(type='text', name='names')
+				tr
+					td Positive Events
+					td
+						input(type='text', name='posEvents')
+				tr
+					td Negative Events
+					td
+						input(type='text', name='negEvents')
+			p
+				input(type='submit' value='Analyze')

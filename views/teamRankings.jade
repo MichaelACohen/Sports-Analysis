@@ -1,0 +1,33 @@
+extends layout
+
+block append cssLinks
+    link(rel="stylesheet" href="https://cdn.datatables.net/1.10.5/css/jquery.dataTables.css")
+block append scripts
+    script (src="https://code.jquery.com/jquery-1.11.1.min.js")
+    script(src="https://cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js")
+    script(src="/javascripts/bootstrap-table-teams.js")
+block content
+    table(id="rankingsTable" class="display" cellspacing="0" width="100%")
+        thead
+            tr
+                th Name
+                th FG%
+                th After 3+ Makes (Abs)
+                th After 3+ Makes (Diff)
+                th After 3+ Misses (Abs)
+                th After 3+ Misses (Diff)
+        tbody
+            -each val, key in data
+                -console.log(val);
+                -var positive = (val.positive*100).toFixed(2);
+                -var negative = (val.negative*100).toFixed(2);
+                -var fgPercent = (val.fgpercent*100).toFixed(2);
+                -var positivePercent = ((parseInt(val.positivemakes)/parseInt(val.positivetotal))*100).toFixed(2);
+                -var negativePercent = ((parseInt(val.negativemakes)/parseInt(val.negativetotal))*100).toFixed(2);
+                tr
+                    td #{val.name}
+                    td #{fgPercent}
+                    td #{val.positivemakes}/#{val.positivetotal} (#{positivePercent}%)
+                    td #{positive}
+                    td #{val.negativemakes}/#{val.negativetotal} (#{negativePercent}%)
+                    td #{negative}

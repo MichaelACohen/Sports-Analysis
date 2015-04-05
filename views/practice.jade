@@ -1,0 +1,20 @@
+extends layout
+
+block append scripts
+	script(src='http://code.highcharts.com/highcharts.js')
+	script(src='/javascripts/regression.js')
+	script(src='/javascripts/highcharts-regression.js')
+	script(src='/javascripts/chartPractice.js')
+	script.
+		makePosChart(!{JSON.stringify(positive)});
+		makeNegChart(!{JSON.stringify(negative)});
+		makeTeamPosChart(!{JSON.stringify(teamPos)});
+		makeTeamNegChart(!{JSON.stringify(teamNeg)});
+block content
+	h1 #{title}
+
+	div(id='playermakes', style={float:'left', width: '50%', height: '400px'})
+	div(id='playermisses', style={float:'right', width: '50%', height: '400px'})
+	div
+	div(id='teammakes', style={float:'left', width: '50%', height:'400px'})
+	div(id='teammisses', style={float:'right', width: '50%', height:'400px'})
